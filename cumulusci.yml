@@ -1,0 +1,30 @@
+minimum_cumulusci_version: '3.60.0'
+project:
+    name: autotest
+    package:
+        name: autotest
+        api_version: 'y'
+    git:
+        default_branch: 'main'
+        prefix_feature: 'test'
+        prefix_beta: 'test'
+        prefix_release: 'test'
+    test:
+        name_match: 'test'
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/autotest/tests
+            options:
+                outputdir: robot/autotest/results
+
+    robot_testdoc:
+        options:
+            path: robot/autotest/tests
+            output: robot/autotest/doc/autotest_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
